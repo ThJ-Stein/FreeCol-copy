@@ -1,6 +1,7 @@
 language: java
 jdk:
   - openjdk12
+
 #env:
 #  - DSTAMP=$(date +%F)
 #addons:
