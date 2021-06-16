@@ -1,7 +1,8 @@
 language: java
 jdk:
   - openjdk12
-
+script:
+  - ant testci
 #env:
 #  - DSTAMP=$(date +%F)
 #addons:
