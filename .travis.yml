@@ -28,4 +28,4 @@ deploy:
   file: "dist/releases/*"
   on:
     repo: ThJ-Stein/FreeCol-copy
-    branch: master
+    branch: slim
