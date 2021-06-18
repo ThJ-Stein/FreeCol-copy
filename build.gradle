@@ -1,0 +1,39 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+//    maven {
+//        url = uri("http://devel.uji.es/nexus/content/repositories/releases")
+//    }
+}
+
+dependencies {
+    compile files('jars/commons-cli-1.4.jar')
+    compile files('jars/cortado-0.6.0.jar')
+    compile files('jars/findbugs-annotations.jar')
+    compile files('jars/jogg-0.0.17.jar')
+    compile files('jars/jorbis-0.0.17.jar')
+    compile files('jars/miglayout-core-5.0.jar')
+    compile files('jars/miglayout-swing-5.0.jar')
+    compile files('jars/jsmoothgen.jar')
+    compile files('jars/jsmoothgen-ant.jar')
+
+    // https://mvnrepository.com/artifact/net.charabia/jsmoothgen
+//    implementation group: 'net.charabia', name: 'jsmoothgen', version: '0.9.9-7'
+
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+mainClassName = 'net.sf.freecol.FreeCol'
