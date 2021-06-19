@@ -89,7 +89,7 @@
     <target name="define-jsmoothgen">
         <taskdef name="jsmoothgen"
                  classname="net.charabia.jsmoothgen.ant.JSmoothGen"
-                 classpath="${basedir}/jars/jsmoothgen-ant.jar"/>
+                 classpath="${freecol.build.dir}/jars/jsmoothgen-ant.jar"/>
     </target>
 
     <target name="init" unless="TSTAMP">
