@@ -1,31 +1,29 @@
 language: java
 jdk:
-  - openjdk12
+- openjdk12
 env:
+  matrix:
   - DSTAMP=$(date +%F)
+  global:
+    secure: nGP6pdQ9dbtv9Q7mg8x1x9pdGsvX3EF53L8bC6gQb5Ar1VIethovzmKsyaeOjF4BLqRAHY+m1o1WkRiBgKioxvEFjB4RNOXTfrd4sjUPd5gzdCAaS2il6IzmlCGvolnypfrWdxIMJSdnEF77czIc3OoRRGCwifCjkWdSOEAZX+EK5R28Ovl3wVGMtTw+mtEtWNZnD+x17jkrBw7l6PkUTYP5dWB3lbt6JSzbGuWNU77L9heYNmxaBaelcLlQbnJ73Q0FbSm9Tn5/nCkxjSBVHMw9uJzEGaanYjeLl3V/i5Sbmld2ar0WtyOwpKg0b5a1eAJmkxgrXp7KOQcebYCeCS8Hzz7KRtcGEFl++R/WoayYytu99xD1TIGKvfdaxTVQWCSs4PGfYhmrEAd0KpsNFG2geuExKrZefHq3JBecsBPLKJIKzM9q+nTz777AsPZV3d791qGO1psUVNppt+pH8DlOCBIWIYcSqnI57xrxo19EKZJr0iFVnAYZfHua4uehkMgpI6eUOyrgVgiiwKwSxRtEsSH68595OMzV5PqPSx84uo6cvRJOVZ+JZ9Y09TAWDuuy+Ad3S5Gm+U2OdrxOOrW2WkQ3LR83I6RawF7hG0quClZW8Sj+8ZK93Ks1BAzguhI1s7ClJSjyssBRkw80ywPK2Gx8MSkRUJth9aDV5Xw=
 addons:
   apt:
     packages:
-      - ant-optional
-##before_install:
-##  - if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_EVENT_TYPE" == "cron" ]]; then .travis/merge-sourceforge.sh; fi
-##  - if [[ "$TRAVIS_BRANCH" == "slim" && "$TRAVIS_EVENT_TYPE" == "cron" ]]; then .travis/merge-slim.sh; fi
-##  - if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_EVENT_TYPE" == "cron" ]]; then .travis/deploy-sourceforge-merge.sh; fi
-##  - if [[ "$TRAVIS_BRANCH" == "slim" && "$TRAVIS_EVENT_TYPE" == "cron" ]]; then .travis/deploy-slim-merge.sh; fi
+    - ant-optional
 script:
-  - ant testci
+- ant testci
 before_deploy:
-  - ant nightly-release
-  - ls -l dist/releases
+- ant nightly-release
+- ls -l dist/releases
 deploy:
   provider: releases
   skip_cleanup: true
-  tag_name: "nightly-$DSTAMP"
+  tag_name: nightly-$DSTAMP
   prerelease: true
-  name: "Nightly Release: $DSTAMP"
+  name: 'Nightly Release: $DSTAMP'
   api_key:
-    secure: "gl/7kQy0EsBI3lVP83KGUbJWTmkf9vwNIMtqA7lIGdgnYI4rXQPWvTZ2k5u3vZpC6HEUjeNXFQnPq8b4Q9ZVO6RlFy7yVvxVR/cPMTjraGDtnlyV1Yg1coVFKNti3lZBp7KpfTUnSG8w6D1Sl74AQZ9D/SWRa0yyYgLjecIdFIoyqaQQERir2S3u1nD7xNcAINRrVyP2xEGCkVwVJxHbilNngSEvPCNwQXL4PkOOIEvKI+e2+46HRH9J8svDEM0p5BK7eZMSJ3ybAaJEXfPOZstMXeE7NWuW+yPC8eMXpH+RTaGGNqj9dplFT2zUfzJrJFIB02tbsIf9rYUOVhxL1jJuKExs+k23zag2F2pbz+kbuD33GLNPT3tK6lXOO0n4Ps98MxwFAQBlx54C7/xwDOVuVVv749T9T3/iQ/A1y9YZCZvLB/1doG6eCrg3VyogK1uzzwxKjKQFBWS3lkoAe5IBIaMB08heofJYAzlnlCzbDEx9jQeOf2SN6Nr1mpFSA4whjgyVkllvWKVkLrb40/+3BSGYseQHGsCgSVajfsm0JJOg48mVRXo9jUKSHIIHUB2e32Gybq5BZMGvqBeP97D1/RnIyi5jxuSADsl1D9gWPBgENFsu0tmECLqhEKXPVB3L/l5i4f+Qrx21Lu0N2e3yx13UcK7xyvgewKp1EZs="#  file_glob: true
-  file: "dist/releases/*"
+    secure: gl/7kQy0EsBI3lVP83KGUbJWTmkf9vwNIMtqA7lIGdgnYI4rXQPWvTZ2k5u3vZpC6HEUjeNXFQnPq8b4Q9ZVO6RlFy7yVvxVR/cPMTjraGDtnlyV1Yg1coVFKNti3lZBp7KpfTUnSG8w6D1Sl74AQZ9D/SWRa0yyYgLjecIdFIoyqaQQERir2S3u1nD7xNcAINRrVyP2xEGCkVwVJxHbilNngSEvPCNwQXL4PkOOIEvKI+e2+46HRH9J8svDEM0p5BK7eZMSJ3ybAaJEXfPOZstMXeE7NWuW+yPC8eMXpH+RTaGGNqj9dplFT2zUfzJrJFIB02tbsIf9rYUOVhxL1jJuKExs+k23zag2F2pbz+kbuD33GLNPT3tK6lXOO0n4Ps98MxwFAQBlx54C7/xwDOVuVVv749T9T3/iQ/A1y9YZCZvLB/1doG6eCrg3VyogK1uzzwxKjKQFBWS3lkoAe5IBIaMB08heofJYAzlnlCzbDEx9jQeOf2SN6Nr1mpFSA4whjgyVkllvWKVkLrb40/+3BSGYseQHGsCgSVajfsm0JJOg48mVRXo9jUKSHIIHUB2e32Gybq5BZMGvqBeP97D1/RnIyi5jxuSADsl1D9gWPBgENFsu0tmECLqhEKXPVB3L/l5i4f+Qrx21Lu0N2e3yx13UcK7xyvgewKp1EZs=
+  file: dist/releases/*
   on:
     repo: ThJ-Stein/FreeCol-copy
     branch: master
