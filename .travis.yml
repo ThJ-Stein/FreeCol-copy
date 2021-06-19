@@ -27,3 +27,4 @@ deploy:
   on:
     repo: ThJ-Stein/FreeCol-copy
     branch: master
+
