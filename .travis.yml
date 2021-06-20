@@ -1,29 +1,27 @@
 language: java
 jdk:
-  - openjdk12
+- openjdk12
 env:
   matrix:
-    - DSTAMP=$(date +%F)
+  - DSTAMP=$(date +%F)
   global:
-    secure: nGP6pdQ9dbtv9Q7mg8x1x9pdGsvX3EF53L8bC6gQb5Ar1VIethovzmKsyaeOjF4BLqRAHY+m1o1WkRiBgKioxvEFjB4RNOXTfrd4sjUPd5gzdCAaS2il6IzmlCGvolnypfrWdxIMJSdnEF77czIc3OoRRGCwifCjkWdSOEAZX+EK5R28Ovl3wVGMtTw+mtEtWNZnD+x17jkrBw7l6PkUTYP5dWB3lbt6JSzbGuWNU77L9heYNmxaBaelcLlQbnJ73Q0FbSm9Tn5/nCkxjSBVHMw9uJzEGaanYjeLl3V/i5Sbmld2ar0WtyOwpKg0b5a1eAJmkxgrXp7KOQcebYCeCS8Hzz7KRtcGEFl++R/WoayYytu99xD1TIGKvfdaxTVQWCSs4PGfYhmrEAd0KpsNFG2geuExKrZefHq3JBecsBPLKJIKzM9q+nTz777AsPZV3d791qGO1psUVNppt+pH8DlOCBIWIYcSqnI57xrxo19EKZJr0iFVnAYZfHua4uehkMgpI6eUOyrgVgiiwKwSxRtEsSH68595OMzV5PqPSx84uo6cvRJOVZ+JZ9Y09TAWDuuy+Ad3S5Gm+U2OdrxOOrW2WkQ3LR83I6RawF7hG0quClZW8Sj+8ZK93Ks1BAzguhI1s7ClJSjyssBRkw80ywPK2Gx8MSkRUJth9aDV5Xw=
+    ssecure: "Ncz+uoi+r4aQgeG9b+pbpVhffNZqSRROH//H8FfrZErEPYLQK0RBHjM9o/DgziOmW8hZ3rIFvGoAe8niS6cAGZEa1kCekiICweZQh4jdkJxPK0unvpd09b2ZNHx1FSTkGDHssZ74IvyAsFrpDXzUfR3FNDqAySd8Q46EbZNMic+mQlxLihhxjdUyZwbjUoBFr0U0JTV4P3jGEQGzBWNbZSjLnoDMeiNkgEgeTxPhOL9bwPInxPjRVtNiXlvWF4BqtWaeeVJGrEKZRNLHbo80RGTBgHZCqexmeFMLygT03Sh7OAi+ZsD2JUgg3RcC0XyWSU2TK1E985Sj5fGuqOYCEhAqW1/9JRPG/lJxDqfAyuisBilf36IrepMH3+V2UswDz+JYBcYNWQy+QmqrwtwL5IuyKGCw3UK0SUVazKyBTpm5zHyVhu9ucVq6l/JuZLyutyY2FgeC6r4lvKfXvuQ562bWo/j/3QBjvdMWeoVgnWS7tO6aDDJsPwdnqSj/j9jf6ORbtkvjKefv75fbsHoSP8/znGatdcojOavcVXe310hl55O7LYZpZkQ8gBfLNFTBuHXvbHChu7m80jwsgIMj/8IxpvmrQVnzS21WjdZnuRlFfsh4rRUK1qZGhWI4OeTLi/R9Ame2Zcvis946cLDtUYYuMeTCvLnPHxoRrN2a9k4="
+before_install:
+  - echo -n | openssl s_client -conncoverity_scanect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
   apt:
     packages:
-      - ant-optional
+    - ant-optional
+  coverity_scan:
+    project:
+      name: "ThJ-Stein/FreeCol-copy"
+      description: "project to learn about automated CI/CD pipelines"
+    notification_email: t.stouten@student.utwente.nl
+    build_command_prepend: "cov-configure --java"
+    build_command: "ant nightly-release"
+    branch_pattern: master
 script:
-  - ant testci
+- ant testci
 before_deploy:
-  - ant nightly-release
-  - ls -l dist/releases
-deploy:
-  provider: releases
-  skip_cleanup: true
-  tag_name: nightly-$DSTAMP
-  prerelease: true
-  name: 'Nightly Release: $DSTAMP'
-  api_key:
-    secure: "GiMJfutrdG+bGDtf1L9EFdo9dp1Gd0N7v4NbxaT7RRjy2Hj9Z6YLYzffvIZDowZNNhZ5KhA1nN16586gwxwZsbQPhxXJd9EZoXFaahLLekWxPjfu1Mb9T2D7jqL3oNr1E2IWC1dS2LXPnoHtMGE8CpBkyXokm5L0T5cWbS6sSeTTOlGbz31GawqtYf4kahzpLpok0zzrQsAVxIffnFvbe54qTcp4tDzI/7CarfBNpeB0Y34ZTuzqeUrPKR+vnCNUSqINxgX3usG9yY31BQa/SWQ+pAI1XiAf9bdw9eg7DkO9Z19jPzsTkgRd7FuVQVllfL8qjHpjsVxMNnJI/nmv2gVdYgPxLQpbzJ86Y1BwdLM0Bewvq41lCJyriKxMv9mNRByfNoZ3U3yJlqLS2k9985f1BZBZotDOovnG2az+4d1F07Af3nIlJfbVJaP6Z1flwtoABvhwF1JRTB21dV9q8LQ8eBZKoUHHWQwEMDjjO7eeT+sdtuFIzLetMk6DoRm2jzsvNiJlM3Kj+qoGPTpniU3q2wx+WKp3R6ZFZN0yLIPvF+KdFcqYvnn6ZFm9Q/2x8oblQ98xfEerbEgi/aH5gWJ550e0LO7G6bPMkN9k4hv18fFXdgaeZ7aSqdN+Fn6+GaKCwD+CL1haTAb7Czi6DQ7bdk1Rq+SNzvZ9og79a4I="
-  file: dist/releases/*
-  on:
-    repo: ThJ-Stein/FreeCol-copy
-    branch: master
+- ant nightly-release
+- ls -l dist/releases
