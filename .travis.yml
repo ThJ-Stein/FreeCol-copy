@@ -5,9 +5,10 @@ env:
   matrix:
   - DSTAMP=$(date +%F)
   global:
-    ssecure: "Ncz+uoi+r4aQgeG9b+pbpVhffNZqSRROH//H8FfrZErEPYLQK0RBHjM9o/DgziOmW8hZ3rIFvGoAe8niS6cAGZEa1kCekiICweZQh4jdkJxPK0unvpd09b2ZNHx1FSTkGDHssZ74IvyAsFrpDXzUfR3FNDqAySd8Q46EbZNMic+mQlxLihhxjdUyZwbjUoBFr0U0JTV4P3jGEQGzBWNbZSjLnoDMeiNkgEgeTxPhOL9bwPInxPjRVtNiXlvWF4BqtWaeeVJGrEKZRNLHbo80RGTBgHZCqexmeFMLygT03Sh7OAi+ZsD2JUgg3RcC0XyWSU2TK1E985Sj5fGuqOYCEhAqW1/9JRPG/lJxDqfAyuisBilf36IrepMH3+V2UswDz+JYBcYNWQy+QmqrwtwL5IuyKGCw3UK0SUVazKyBTpm5zHyVhu9ucVq6l/JuZLyutyY2FgeC6r4lvKfXvuQ562bWo/j/3QBjvdMWeoVgnWS7tO6aDDJsPwdnqSj/j9jf6ORbtkvjKefv75fbsHoSP8/znGatdcojOavcVXe310hl55O7LYZpZkQ8gBfLNFTBuHXvbHChu7m80jwsgIMj/8IxpvmrQVnzS21WjdZnuRlFfsh4rRUK1qZGhWI4OeTLi/R9Ame2Zcvis946cLDtUYYuMeTCvLnPHxoRrN2a9k4="
+    secure: "hO7SKhLCHsCntppxyoWh4Acx7csLvTtJC3VL3i9wtlIxjLXzWn9feELp0HGbZS2pcZRq7O5oipSjs99W/K1IaKVXWnlgPzzC2ggyXGDeeoFYoqa/9QhW/O9iVJH8JkXK74za84nnNdlLnDsQ+xUnHoWKXZVy7exSL0mUbKQzXJrUZeiHd6om1TRxxAgFWHBWHu7d9MISYQVkogrI1LFT75wNQ6WjLVOeAqn6hBED8ls63ZFOTY2IDYskAlkLfQMOtyjjuxMdZwIcWLM/Vwc7Kmo68j13o3jiq1c38lgQCtC/o5jJ4MkGGUXYD8tqDzARigr9AL8RhB7Azz8fk4Y1sTiPhppBlyYgbdnmYWnYaIIAtfS3G6Fz0jsJ6O9HlxbE018lLWmhj5ihjU+1ibdbWAWHsON3gv+mcN3zMiWg+Mfy26W9nQMRdPGBF8i4To8NiNWJXm3QXTDpuaJF2OVH4pmRtDTj3OFswNIvIqDSBdb9iw5QoVqfZ/aalifAJ0jK+RW1yoe59nDkgR2EkGMtUHIbGKX2PXP3q9WEv1a0Ho8+6Je8FojYY9hcKSYr+CUptE3AVt8vgXEVSevAU0+qWd+VPO1OEqOOtMjIF0g/WVgGMi0dpZoqC1ANizQRi5wRPre3OKDGILugQFF8pbQRSvDCJf1vKHl5QF28TE0tenA="
+
 before_install:
-  - echo -n | openssl s_client -conncoverity_scanect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
   apt:
     packages:
@@ -25,3 +26,16 @@ script:
 before_deploy:
 - ant nightly-release
 - ls -l dist/releases
+deploy:
+  provider: releases
+  skip_cleanup: true
+  tag_name: nightly-$DSTAMP
+  prerelease: true
+  name: 'Nightly Release: $DSTAMP'
+  api_key:
+    secure: "GiMJfutrdG+bGDtf1L9EFdo9dp1Gd0N7v4NbxaT7RRjy2Hj9Z6YLYzffvIZDowZNNhZ5KhA1nN16586gwxwZsbQPhxXJd9EZoXFaahLLekWxPjfu1Mb9T2D7jqL3oNr1E2IWC1dS2LXPnoHtMGE8CpBkyXokm5L0T5cWbS6sSeTTOlGbz31GawqtYf4kahzpLpok0zzrQsAVxIffnFvbe54qTcp4tDzI/7CarfBNpeB0Y34ZTuzqeUrPKR+vnCNUSqINxgX3usG9yY31BQa/SWQ+pAI1XiAf9bdw9eg7DkO9Z19jPzsTkgRd7FuVQVllfL8qjHpjsVxMNnJI/nmv2gVdYgPxLQpbzJ86Y1BwdLM0Bewvq41lCJyriKxMv9mNRByfNoZ3U3yJlqLS2k9985f1BZBZotDOovnG2az+4d1F07Af3nIlJfbVJaP6Z1flwtoABvhwF1JRTB21dV9q8LQ8eBZKoUHHWQwEMDjjO7eeT+sdtuFIzLetMk6DoRm2jzsvNiJlM3Kj+qoGPTpniU3q2wx+WKp3R6ZFZN0yLIPvF+KdFcqYvnn6ZFm9Q/2x8oblQ98xfEerbEgi/aH5gWJ550e0LO7G6bPMkN9k4hv18fFXdgaeZ7aSqdN+Fn6+GaKCwD+CL1haTAb7Czi6DQ7bdk1Rq+SNzvZ9og79a4I="
+  file: dist/releases/*
+  on:
+    repo: ThJ-Stein/FreeCol-copy
+    branch: master
+
