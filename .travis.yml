@@ -19,7 +19,7 @@ addons:
     notification_email: t.stouten@student.utwente.nl
     build_command_prepend: "cov-configure --java"
     build_command: "ant nightly-release"
-    branch_pattern: coverity_scan
+    branch_pattern: master
 script:
 - ant testci
 before_deploy:
