@@ -17,8 +17,7 @@ addons:
     project:
       name: "ThJ-Stein/FreeCol-copy"
       description: "project to learn about automated CI/CD pipelines"
-    notification_email: t.stouten@student.utwente.nl
-    build_command_prepend: "build.xml"
+    notification_email:
     build_command: "ant nightly-release"
     branch_pattern: coverity_scan
 script:
