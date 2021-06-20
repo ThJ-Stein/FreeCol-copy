@@ -6,7 +6,7 @@ env:
   - DSTAMP=$(date +%F)
   global:
     secure: "ZmrxnNctXlIWSAQnd3CYJTHvziBCKE+8UHsnZOM5pLR6guiq2czAw1aI3lzrboxl76mEUbXcNPm4/KD9jiEsibJK9aXzmKTiIbeThxhcXjFXwNcRaaEIzMSIWv1u84rXxgXtJk6dR2J/pZqwwUwJcnqxyDfW31NLbewLNmaf7Rq+Tx2sU749qlghGR2L6Lrr//yVXS3HNH9hXPUN6zjvNsIAmyRg1Or70TqeEtFoflbRq4/9bRiz1nvfHJ6t3onvP4kjK3glZAkPa3pneDXYZgm4hv+3wYLTaEL/0+HaS4SCY7Uu2OFKwnkCu75Yl83k2ZuR1zgXg4oVSGIdMmYoH1zrjSEEo6fKqaalPySxS7QWyYOHyD5u8xzFdFRNI561p21gnuZBQ1rrZjda2q4RncmFps2KnEM7bSPokbGMAAXDcLcQYEXybW/JWFyKkRvBFzVFiFcVCJHGyE67ONZBPm89lr2FjAfCur3xmaRejclYunA5s3aQdIseu5s/598Z4LSisnPHPdqrS2kChJARAvHUa8+N9FD1CFINzKfRDTtIbBFvl7Xa6Wqld8INGjYIPW8catcow4ynSKDKrLj5yFV67gexcLVJ3fS6mEjzFQjGgVxLkb6yQcieAqA48iz8zqdkBixX3QxLJfNlWGRjhdDJ66oI1O/s8lezszI+RZE="
-
+    COVERITY_SCAN_TOKEN: _gnYNv1ZwX9uS8YT23rjew
 before_install:
   - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
