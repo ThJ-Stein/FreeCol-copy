@@ -14,12 +14,12 @@ addons:
     - ant-optional
   coverity_scan:
     project:
-      name: ThJ-Stein/FreeCol-copy
+      name: "ThJ-Stein/FreeCol-copy"
       description: "project to learn about automated CI/CD pipelines"
     notification_email: t.stouten@student.utwente.nl
-    build_command_prepend: cov-configure --java
-    build_command: ant nightly-release
-    branch_pattern: coverity_scan
+    build_command_prepend: "cov-configure --java"
+    build_command: "ant nightly-release"
+    branch_pattern: master
 script:
 - ant testci
 before_deploy:
