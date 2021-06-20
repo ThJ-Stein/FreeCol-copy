@@ -91,7 +91,7 @@ public final class FreeCol {
     private static final Logger logger = Logger.getLogger(FreeCol.class.getName());
 
     /** The FreeCol release version number. */
-    private static final String FREECOL_VERSION = "git-20210619";
+    private static final String FREECOL_VERSION = "git-20210620";
 
     /** The FreeCol protocol version number. */
     private static final String FREECOL_PROTOCOL_VERSION = "0.1.6";
