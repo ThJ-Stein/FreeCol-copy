@@ -5,8 +5,7 @@ env:
   matrix:
   - DSTAMP=$(date +%F)
   global:
-    secure: "ZmrxnNctXlIWSAQnd3CYJTHvziBCKE+8UHsnZOM5pLR6guiq2czAw1aI3lzrboxl76mEUbXcNPm4/KD9jiEsibJK9aXzmKTiIbeThxhcXjFXwNcRaaEIzMSIWv1u84rXxgXtJk6dR2J/pZqwwUwJcnqxyDfW31NLbewLNmaf7Rq+Tx2sU749qlghGR2L6Lrr//yVXS3HNH9hXPUN6zjvNsIAmyRg1Or70TqeEtFoflbRq4/9bRiz1nvfHJ6t3onvP4kjK3glZAkPa3pneDXYZgm4hv+3wYLTaEL/0+HaS4SCY7Uu2OFKwnkCu75Yl83k2ZuR1zgXg4oVSGIdMmYoH1zrjSEEo6fKqaalPySxS7QWyYOHyD5u8xzFdFRNI561p21gnuZBQ1rrZjda2q4RncmFps2KnEM7bSPokbGMAAXDcLcQYEXybW/JWFyKkRvBFzVFiFcVCJHGyE67ONZBPm89lr2FjAfCur3xmaRejclYunA5s3aQdIseu5s/598Z4LSisnPHPdqrS2kChJARAvHUa8+N9FD1CFINzKfRDTtIbBFvl7Xa6Wqld8INGjYIPW8catcow4ynSKDKrLj5yFV67gexcLVJ3fS6mEjzFQjGgVxLkb6yQcieAqA48iz8zqdkBixX3QxLJfNlWGRjhdDJ66oI1O/s8lezszI+RZE="
-    COVERITY_SCAN_TOKEN: "_gnYNv1ZwX9uS8YT23rjew"
+    secure: "L1YpvxOJpcVPZf0locjXY0NfqHWAO/Xlexk5NJEIacxEq4XCvYupIPu/cbSCiVyWrpS6OktU4gzDkFoMs3DjR8A2PO4KHX+0Ec1tftkgg0y22l//gDm+Pe0NHa21Io7Xb025oRNWsY7wRf9kN+ahh4WpIR9VSh0A1BRielGZeS+5nBr1ey2PS4Qv9Z3vwvoNPDErFTkHjNfLQdHZLztbJsBGLYHwDYvdxNq+PTWGoOjqwPg1lymmtHYNue00Q4GVJnhODSHLj9S697gaSLGWAmOlUT1j1U5R9mIWjPfFi+Ha3r+XP6DkzG7PIpsnjG9uz2zUp6wiYS9/RNTRnLPOhymj5xoGJ+7bU5jdLnfBoR/TfyMbm9/wW5s5iGsucVcRQdl4OigMLeV3KHSIbCuAYaH/K7dqfHrf0O7T/4SZsiyRyNadeZfXGwL0V/TdnsHBGQBITDPGa0sY2fkMhYreCeRPQ83WnViCrgoGM2x1qJO5hMQJgkE91td1IN6iwK6pu1lIApSpD7O/wWqjFDS4ARu19lq3UvC+7d865Ro+L9dHO7h/spXhz7LguLQDhliGHv6QKYcjeKGVK6WZMoaie/8EzwSnnHY0hkRXWqeUkouKPNDKNLKsCfE03LIpdttXRK/lbxafTogRsbxb/FN4XGVIYY8FmERrldF2IVLOqaE="
 
 before_install:
   - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
@@ -19,7 +18,6 @@ addons:
       name: "ThJ-Stein/FreeCol-copy"
       description: "project to learn about automated CI/CD pipelines"
     notification_email: t.stouten@student.utwente.nl
-    build_command_prepend: "cov-configure --java"
     build_command: "ant nightly-release"
     branch_pattern: coverity_scan
 script:
