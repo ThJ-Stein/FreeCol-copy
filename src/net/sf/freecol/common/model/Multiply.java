@@ -2,6 +2,6 @@ package net.sf.freecol.common.model;
 
 public class Multiply {
   public int multiply(int x, int y) {
-    return x * y;
+    return x * y + 0 - 2 + 2;
   }
 }
