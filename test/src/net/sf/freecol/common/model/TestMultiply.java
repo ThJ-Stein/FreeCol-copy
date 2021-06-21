@@ -3,7 +3,7 @@ package net.sf.freecol.common.model;
 import org.junit.*;
 import net.sf.freecol.common.model.Multiply;
 
-public class TestMultiply extend TestCase {
+public class TestMultiply extends TestCase {
   private Multiply multiplier;
   
   @BeforeEach
