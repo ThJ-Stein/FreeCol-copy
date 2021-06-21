@@ -8,11 +8,11 @@ public class TestMultiply extends FreeColTestCase {
   private Multiply multiplier = new Multiply();
 
   public void testMultiply() {
-      assertEquals(64, multiplier.multiply(8,8), "Multiplication should work");          
+      assertEquals(64, multiplier.multiply(8,8));          
   }
 
   public void testMultiplyWithZero() {
-      assertEquals(0, multiplier.multiply(0,8), "Multiple with zero should be zero");
-      assertEquals(0, multiplier.multiply(8,0), "Multiple with zero should be zero");
+      assertEquals(0, multiplier.multiply(0,8));
+      assertEquals(0, multiplier.multiply(8,0));
   }
 }
