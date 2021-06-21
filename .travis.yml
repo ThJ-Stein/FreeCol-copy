@@ -4,7 +4,7 @@ jdk:
   - openjdk12
 env:
   matrix:
-    - DSTAMP=$(date +%F+0.0001)
+    - DSTAMP=$(date +%F)
   global:
     secure: nGP6pdQ9dbtv9Q7mg8x1x9pdGsvX3EF53L8bC6gQb5Ar1VIethovzmKsyaeOjF4BLqRAHY+m1o1WkRiBgKioxvEFjB4RNOXTfrd4sjUPd5gzdCAaS2il6IzmlCGvolnypfrWdxIMJSdnEF77czIc3OoRRGCwifCjkWdSOEAZX+EK5R28Ovl3wVGMtTw+mtEtWNZnD+x17jkrBw7l6PkUTYP5dWB3lbt6JSzbGuWNU77L9heYNmxaBaelcLlQbnJ73Q0FbSm9Tn5/nCkxjSBVHMw9uJzEGaanYjeLl3V/i5Sbmld2ar0WtyOwpKg0b5a1eAJmkxgrXp7KOQcebYCeCS8Hzz7KRtcGEFl++R/WoayYytu99xD1TIGKvfdaxTVQWCSs4PGfYhmrEAd0KpsNFG2geuExKrZefHq3JBecsBPLKJIKzM9q+nTz777AsPZV3d791qGO1psUVNppt+pH8DlOCBIWIYcSqnI57xrxo19EKZJr0iFVnAYZfHua4uehkMgpI6eUOyrgVgiiwKwSxRtEsSH68595OMzV5PqPSx84uo6cvRJOVZ+JZ9Y09TAWDuuy+Ad3S5Gm+U2OdrxOOrW2WkQ3LR83I6RawF7hG0quClZW8Sj+8ZK93Ks1BAzguhI1s7ClJSjyssBRkw80ywPK2Gx8MSkRUJth9aDV5Xw=
 addons:
