@@ -1,9 +1,10 @@
 package net.sf.freecol.common.model;
 
 import org.junit.*;
+import net.sf.freecol.util.test.FreeColTestCase;
 import net.sf.freecol.common.model.Multiply;
 
-public class TestMultiply extends TestCase {
+public class TestMultiply extends FreeColTestCase {
   private Multiply multiplier = new Multiply();
 
   public void testMultiply() {
