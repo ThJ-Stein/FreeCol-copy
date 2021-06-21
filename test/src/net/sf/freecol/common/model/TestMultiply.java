@@ -14,7 +14,7 @@ public class TestMultiply extend TestCase {
   @Test                                               
     @DisplayName("Multiplication test")   
     public void testMultiply() {
-        assertEquals(64, multiplier.multiply(8,8),      
+        assertEquals(63, multiplier.multiply(8,8),      
         "Multiplication should work");          
     }
 
