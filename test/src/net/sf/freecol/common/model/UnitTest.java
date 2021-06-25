@@ -114,6 +114,30 @@ public class UnitTest extends FreeColTestCase {
         Unit brave = new ServerUnit(game, tile2, sioux, braveType);
         assertFalse("A brave is not a colonist", brave.isColonist());
     }
+    
+    /**
+     * Test unit for person status
+     *
+     */
+    public void testIsPerson() {
+        Game game = getStandardGame();
+        Map map = getTestMap(plains, true);
+        game.changeMap(map);
+
+        Player dutch = game.getPlayerByNationId("model.nation.dutch");
+        Player sioux = game.getPlayerByNationId("model.nation.sioux");
+        Tile tile1 = map.getTile(6, 8);
+        Tile tile2 = map.getTile(6, 9);   
+        
+        Unit treasureTrain = new ServerUnit(game, null, dutch, treasureTrainType);
+        assertFalse("A treasure train is not a person", treasureTrain.isPerson());
+        
+        Unit soldier = new ServerUnit(game, tile1, dutch, veteranSoldierType);
+        assertTrue("A soldier is a person", soldier.isPerson());
+        
+        Unit wagonTrain = new ServerUnit(game, null, dutch, wagonType);
+        assertFalse("A wagon train is not a person", wagonTrain.isPerson());
+    }
 
     public void testCanAdd() {
         Game game = getStandardGame();
