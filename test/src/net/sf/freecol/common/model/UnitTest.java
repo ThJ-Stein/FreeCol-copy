@@ -117,6 +117,9 @@ public class UnitTest extends FreeColTestCase {
    
     public void testGetChange() {
         Game game = getGame();
+        Map map = getTestMap(plains, true);
+        game.changeMap(map);
+        
         Player dutch = game.getPlayerByNationId("model.nation.dutch");
         Tile tile1 = map.getTile(6, 8);
         Unit soldier = new ServerUnit(game, tile1, dutch, veteranSoldierType);
