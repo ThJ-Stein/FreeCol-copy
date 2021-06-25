@@ -693,8 +693,7 @@ public class Unit extends GoodsLocation
      * @return True if this unit is a person.
      */
     public boolean isPerson() {
-        return (this.type == null) ? false
-            : this.type.hasAbility(Ability.PERSON);
+        return this.type != null && this.type.hasAbility(Ability.PERSON);
     }
 
     /**
