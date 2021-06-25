@@ -785,4 +785,9 @@ public class Europe extends UnitLocation
     public String toString() {
         return "Europe";
     }
+    
+    @Override
+    public String getChange() {
+    	return Europe.UNIT_CHANGE;
+    }
 }
