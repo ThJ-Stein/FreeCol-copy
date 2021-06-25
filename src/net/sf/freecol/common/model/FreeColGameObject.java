@@ -352,4 +352,8 @@ public abstract class FreeColGameObject extends FreeColObject {
         int hash = super.hashCode();
         return 31 * hash + Utils.hashCode(this.game);
     }
+    
+    public String getChange() {
+    	return null;
+    }
 }
