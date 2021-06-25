@@ -8,7 +8,7 @@ public class TestMultiply extends FreeColTestCase {
   private Multiply multiplier = new Multiply();
 
   public void testMultiply() {
-      assertEquals(64, multiplier.multiply(8,8));          
+      assertEquals(65, multiplier.multiply(8,8));          
   }
 
   public void testMultiplyWithZero() {
