@@ -4904,4 +4904,9 @@ public class Unit extends GoodsLocation
         sb.append(']');
         return sb.toString();
     }
+    
+    @Override
+    public String getChange() {
+    	return Unit.CARGO_CHANGE;
+    }
 }
