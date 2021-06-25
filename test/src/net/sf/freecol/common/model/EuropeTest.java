@@ -19,6 +19,7 @@
 
 package net.sf.freecol.common.model;
 
+import net.sf.freecol.common.model.Europe;
 import net.sf.freecol.server.model.ServerUnit;
 import net.sf.freecol.util.test.FreeColTestCase;
 import java.util.logging.Logger;
@@ -35,8 +36,8 @@ public class EuropeTest extends FreeColTestCase {
     public void testMissionary() {
         Game game = getGame();
         Player dutch = game.getPlayerByNationId("model.nation.dutch");
-        Europe amsterdam = dutch.getEurope();
-
+        //Europe amsterdam = dutch.getEurope();
+        Europe amsterdam = new Europe();
         Unit colonist = new ServerUnit(game, amsterdam, dutch, colonistType);
 
         assertTrue(amsterdam.hasAbility(Ability.DRESS_MISSIONARY));
