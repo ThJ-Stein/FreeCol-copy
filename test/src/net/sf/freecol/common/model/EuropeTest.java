@@ -25,6 +25,8 @@ import net.sf.freecol.util.test.FreeColTestCase;
 
 public class EuropeTest extends FreeColTestCase {
 
+    private static final Logger logger = Logger.getLogger(EuropeTest.class.getName());
+    
     private static final UnitType colonistType
         = spec().getUnitType("model.unit.freeColonist");
 
@@ -38,6 +40,7 @@ public class EuropeTest extends FreeColTestCase {
 
         assertTrue(amsterdam.hasAbility(Ability.DRESS_MISSIONARY));
         assertTrue(colonist.hasAbility(Ability.DRESS_MISSIONARY));
+        logger.log(Level.WARNING, amsterdam.getChange());
 //        assertEquals(amsterdam.getChange(), "unitChange");
     }
 }
