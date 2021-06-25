@@ -2210,7 +2210,7 @@ public final class Specification implements OptionContainer {
         // 0.10.x had no unknown enemy nation, just an unknown enemy
         // player, and the type was poorly established.
         Nation ue = findType(Nation.UNKNOWN_NATION_ID, Nation.class);
-        ue.setType(getNationType("model.nationType.default"));
+        ue.setType(getNationType(DEFAULT_NATION_TYPE));
         if (!nations.contains(ue)) {
             nations.add(ue);
             ret = true;
