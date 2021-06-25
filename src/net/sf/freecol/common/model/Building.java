@@ -736,4 +736,9 @@ public class Building extends WorkLocation
             .append(']');
         return sb.toString();
     }
+
+    @Override
+    public String getChange() {
+    	return Building.UNIT_CHANGE;
+    }
 }
