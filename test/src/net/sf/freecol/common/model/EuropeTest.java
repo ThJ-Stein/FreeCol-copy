@@ -36,8 +36,7 @@ public class EuropeTest extends FreeColTestCase {
     public void testMissionary() {
         Game game = getGame();
         Player dutch = game.getPlayerByNationId("model.nation.dutch");
-        //Europe amsterdam = dutch.getEurope();
-        Europe amsterdam = new Europe();
+        Europe amsterdam = dutch.getEurope();
         Unit colonist = new ServerUnit(game, amsterdam, dutch, colonistType);
 
         assertTrue(amsterdam.hasAbility(Ability.DRESS_MISSIONARY));
