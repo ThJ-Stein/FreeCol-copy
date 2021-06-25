@@ -788,9 +788,10 @@ public class Europe extends UnitLocation
    
     /**
      * {@inheritDoc}
-     */
+     
     @Override
     public String getChange() {
     	return Europe.UNIT_CHANGE;
     }
+    */
 }
