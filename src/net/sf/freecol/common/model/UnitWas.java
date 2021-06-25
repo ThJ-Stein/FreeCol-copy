@@ -165,12 +165,7 @@ public class UnitWas implements Comparable<UnitWas> {
 
     // FIXME: fix this non-OO nastiness
     private String change(FreeColGameObject fcgo) {
-        return (fcgo instanceof Tile) ? Tile.UNIT_CHANGE
-            : (fcgo instanceof Europe) ? Europe.UNIT_CHANGE
-            : (fcgo instanceof ColonyTile) ? ColonyTile.UNIT_CHANGE
-            : (fcgo instanceof Building) ? Building.UNIT_CHANGE
-            : (fcgo instanceof Unit) ? Unit.CARGO_CHANGE
-            : null;
+        return fcgo.getChange();
     }
 
     // FIXME: fix this non-OO nastiness
