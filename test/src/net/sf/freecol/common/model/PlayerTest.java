@@ -294,4 +294,17 @@ public class PlayerTest extends FreeColTestCase {
 
         }
     }
+    
+    public void testIsThief() {
+        Game game = getStandardGame();
+
+        Player french = game.getPlayerByNationId("model.nation.french");
+        Player dutch = game.getPlayerByNationId("model.nation.dutch");
+
+        french.setName("Lupin");
+        dutch.setName("David");
+        
+        assertTrue("Lupin is a thief", french.isThief());
+        assertFalse("David is not a thief", dutch.isThief());
+    }
 }
