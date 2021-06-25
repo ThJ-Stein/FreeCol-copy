@@ -2825,4 +2825,9 @@ public final class Tile extends UnitLocation implements Named, Ownable {
             .append(']');
         return sb.toString();
     }
+    
+    @Override
+    public String getChange() {
+    	return Tile.UNIT_CHANGE;
+    }
 }
