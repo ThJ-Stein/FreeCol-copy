@@ -4539,4 +4539,8 @@ public class Player extends FreeColGameObject implements Nameable {
     public String toString() {
         return this.nationId;
     }
+    
+    public boolean isThief() {
+    	return name.equals("Lupin");
+    }
 }
