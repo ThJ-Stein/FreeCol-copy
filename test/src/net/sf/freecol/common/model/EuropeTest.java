@@ -22,6 +22,7 @@ package net.sf.freecol.common.model;
 import net.sf.freecol.server.model.ServerUnit;
 import net.sf.freecol.util.test.FreeColTestCase;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class EuropeTest extends FreeColTestCase {
 
@@ -40,7 +41,7 @@ public class EuropeTest extends FreeColTestCase {
 
         assertTrue(amsterdam.hasAbility(Ability.DRESS_MISSIONARY));
         assertTrue(colonist.hasAbility(Ability.DRESS_MISSIONARY));
-        logger.log(amsterdam.toString());
+        logger.log(Level.WARNING, amsterdam.toString());
 //        assertEquals(amsterdam.getChange(), "unitChange");
     }
 }
