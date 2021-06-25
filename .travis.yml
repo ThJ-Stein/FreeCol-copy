@@ -12,6 +12,7 @@ addons:
     packages:
       - ant-optional
 script:
+  - ant package
   - ant testci
 before_deploy:
   - ant nightly-release
