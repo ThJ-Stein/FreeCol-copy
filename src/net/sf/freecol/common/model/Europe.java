@@ -782,16 +782,15 @@ public class Europe extends UnitLocation
      * {@inheritDoc}
      */
     @Override
-    public String getChange() { //must be toString
+    public String toString() {
         return "Europe";
     }
    
     /**
      * {@inheritDoc}
-     
+    */
     @Override
     public String getChange() {
     	return Europe.UNIT_CHANGE;
     }
-    */
 }
