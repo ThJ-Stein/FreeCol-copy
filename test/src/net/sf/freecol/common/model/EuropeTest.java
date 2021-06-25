@@ -38,5 +38,6 @@ public class EuropeTest extends FreeColTestCase {
 
         assertTrue(amsterdam.hasAbility(Ability.DRESS_MISSIONARY));
         assertTrue(colonist.hasAbility(Ability.DRESS_MISSIONARY));
+        assertEquals(amsterdam.getChange(), "unitChange");
     }
 }

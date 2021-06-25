@@ -154,6 +154,7 @@ public class ColonyTest extends FreeColTestCase {
         nonServerJoinColony(colonist, colony);
         assertTrue(colonist.getLocation() instanceof ColonyTile);
         assertEquals(grainGoodsType, colonist.getWorkType());
+        assertEquals(((ColonyTile) colonist.getLocation()).getChange(), "UNIT_CHANGE");
 
         // colonist with experience in producing farmed goods will
         // produce that type of goods

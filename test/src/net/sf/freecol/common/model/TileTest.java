@@ -199,6 +199,7 @@ public class TileTest extends FreeColTestCase {
                          tile.getWorkAmount(plow));
             assertEquals(tile.getType().toString(), entry.road,
                          tile.getWorkAmount(road));
+            assertEquals(tile.getChange(), "TILE_UNIT_CHANGE");
         }
 
         // Now check the forests
