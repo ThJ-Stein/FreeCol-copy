@@ -590,4 +590,9 @@ public class ColonyTile extends WorkLocation {
             .append(']');
         return sb.toString();
     }
+    
+    @Override
+    public String getChange() {
+    	return ColonyTile.UNIT_CHANGE;
+    }
 }
