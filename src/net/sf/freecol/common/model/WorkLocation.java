@@ -388,9 +388,7 @@ public abstract class WorkLocation extends UnitLocation
         Suggestion sug;
         // Check if the existing non-student units can be improved.
         for (Unit u : transform(getUnits(), isNull(Unit::getTeacher))) {
-            if ((work = u.getWorkType()) == null) {
-                if (occ != null) work = occ.workType;
-            }
+            if ((work = u.getWorkType()) == null && occ != null) work = occ.workType;
             if ((sug = getSuggestion(u, getProductionType(), work)) != null) {
                 result.put(u, sug);
             }
